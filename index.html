@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phiếu học tập STEM | Khám phá băng giá – Lắc ra kem ngon!</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap');
+:root{--ink:#202a43;--muted:#68738b;--line:#e5eaf3;--blue:#315bd5;--green:#168653;--red:#bd3949;--shadow:0 8px 26px #27376912}
+*{box-sizing:border-box}body{margin:0;background:#f5f7fc;color:var(--ink);font:15px/1.55 Roboto,Arial,sans-serif}
+.page{max-width:920px;margin:24px auto;padding:0 15px 48px}
+.hero{padding:29px 30px;border-radius:23px;color:white;background:linear-gradient(115deg,#2368d8,#4b4bc6 58%,#7651c9);box-shadow:0 14px 34px #3157d533;position:relative;overflow:hidden}
+.hero:after{content:"🍦";position:absolute;right:28px;bottom:-22px;font-size:105px;opacity:.2}
+.kicker{font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase}
+h1{font-size:clamp(25px,4vw,35px);line-height:1.2;margin:8px 0}.hero p{margin:0;max-width:680px;color:#ffffffeb}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.meta label{background:white;border:1px solid var(--line);border-radius:12px;padding:9px 13px;color:var(--muted);font-size:12px;font-weight:800;box-shadow:var(--shadow)}
+.meta input{display:block;width:100%;border:0;outline:0;padding:5px 0 0;font:15px Roboto,Arial;color:var(--ink)}
+.card{background:white;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);margin:15px 0;overflow:hidden}
+.intro{padding:17px 20px}.intro h2{margin:0 0 7px;font-size:18px}.intro ul{margin:0;padding-left:20px;color:#4d5872}.intro li{margin:4px 0}
+.head{display:flex;gap:12px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.head .num{width:35px;height:35px;border-radius:11px;display:grid;place-items:center;color:white;font-weight:800;flex:none}
+.head h2{margin:0;font-size:17px}.head p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.body{padding:15px 19px 18px}.blue .head{background:#f0f5ff}.blue .num{background:#3971df}
+.teal .head{background:#eafaf8}.teal .num{background:#159b91}
+.amber .head{background:#fff8e9}.amber .num{background:#d99a22}
+.question{padding:12px 0;border-bottom:1px dashed #e8ecf4}.question:last-child{border:0;padding-bottom:0}
+.q{font-weight:700;margin:0 0 9px}.q b{color:var(--blue);margin-right:5px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.option{display:flex;gap:8px;padding:9px 11px;border:1px solid #e2e8f2;border-radius:10px;background:#fbfcff;cursor:pointer}
+.option input,.tf input,.choice input{accent-color:var(--blue);margin-top:4px}
+.option.correct{border-color:#66bd8b;background:#e9f7ef}.option.wrong{border-color:#e58b95;background:#fff0f1}
+.tfrow{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.tf{display:flex;gap:7px}.tf label,.choice label{border:1px solid #dfe5ef;border-radius:9px;padding:6px 10px;cursor:pointer}
+.answer{width:min(100%,400px);padding:9px 11px;border:1.5px solid #cfd8e8;border-radius:9px;outline:0;font:inherit;background:#fff;color:var(--ink)}
+.answer.correct{border-color:#55ad7c;background:#e9f7ef}.answer.wrong{border-color:#df7885;background:#fff0f1}
+.words{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px}.words span{background:#eef3ff;color:#3157b9;border:1px solid #dce6ff;border-radius:30px;padding:4px 10px;font-size:13px;font-weight:700}
+.fb{font-size:13px;font-weight:700;margin-top:6px}.good{color:var(--green)}.bad{color:var(--red)}.neutral{color:#7a8499}
+.video-box{background:#111827;border-radius:12px;aspect-ratio:16/9;display:grid;place-items:center;overflow:hidden;margin-bottom:10px;color:white;text-align:center}
+.video-box video,.video-box iframe{width:100%;height:100%;border:0;display:block}.video-placeholder{padding:20px}.video-placeholder span{display:block;font-size:36px}
+.video-links{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:13px}.video-links a{color:#315bd5;font-weight:700;text-decoration:none}.muted{color:var(--muted);font-size:12px}
+.experiment{padding:17px 19px;background:linear-gradient(135deg,#fff9ed,#fff);border:1px solid #f0dfb9;border-radius:14px}
+.experiment h3{margin:0 0 8px;color:#9a6712;font-size:18px}.experiment ol{padding-left:22px;margin:7px 0}.experiment li{margin:4px 0}
+.row{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:9px 0}.row input[type=text]{width:220px;max-width:100%;padding:9px 11px;border:1.5px solid #cfd8e8;border-radius:9px;font:inherit}
+.choice{display:flex;gap:9px;flex-wrap:wrap}.choice label{background:white;display:flex;gap:6px;align-items:center}
+.safety{font-size:12px;color:#7a6540;background:#fff1d8;padding:9px 11px;border-radius:9px;margin:12px 0 0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.btn{border:0;border-radius:11px;padding:11px 17px;font-weight:800}
+.primary{color:white;background:linear-gradient(110deg,#315bd6,#684ec5);box-shadow:0 7px 17px #3b50be33}.secondary{background:#edf1f8;color:#3e4b65}
+.result{display:none;padding:18px}.result.show{display:block}.score{font-size:34px;color:var(--blue);font-weight:800}
+.scoreline{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #edf0f6;gap:12px}
+.adminbtn{position:fixed;right:17px;bottom:17px;border:0;border-radius:999px;padding:12px 16px;background:#202b45;color:white;font-weight:800;box-shadow:0 8px 24px #121c373d}
+.admin{display:none;padding:18px;border:2px solid #6a78d4}.admin.open{display:block}.admin h2{margin:0 0 5px}.admingrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.admin label{font-size:13px;font-weight:700}.admin input[type=url],.admin input[type=file]{display:block;width:100%;padding:9px;margin-top:5px;border:1px solid #d6deeb;border-radius:9px}
+.admin-subtitle{font-size:14px;color:#334a91;margin:18px 0 10px;padding-top:12px;border-top:1px solid #e7ebf4}.admin-total{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:10px 0 13px}.admin-total label{font-weight:800}.admin-total input{width:105px;padding:8px;border:1px solid #d6deeb;border-radius:8px}.config-grid{display:grid;gap:9px}.cfg-row{display:grid;grid-template-columns:minmax(145px,1.3fr) minmax(95px,.8fr) minmax(125px,1fr);align-items:center;gap:10px;padding:10px 12px;border:1px solid #e4e9f2;border-radius:11px;background:#fafbfe}.cfg-row label{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.cfg-row input[type=number]{width:75px;padding:7px;border:1px solid #d6deeb;border-radius:7px}.cfg-row .cfg-enable{font-weight:800}.cfg-row input[type=checkbox]{accent-color:#315bd5}.config-sum{padding:10px 12px;border-radius:9px;background:#edf4ff;color:#294da6;font-size:13px;font-weight:800;margin-top:12px}.config-sum.invalid{background:#fff0f1;color:#ad3443}
+.preview{display:block;max-width:100%;max-height:190px;object-fit:contain;margin-top:10px;border-radius:10px}.hidden{display:none!important}
+.footer{text-align:center;color:#8791a5;font-size:12px;margin-top:20px}
+@media(max-width:620px){.page{margin:12px auto;padding:0 10px 40px}.hero{padding:22px 18px}.hero:after{font-size:75px;right:8px}.meta,.options,.admingrid,.cfg-row{grid-template-columns:1fr}.body{padding:13px}.head{padding:13px}.adminbtn{right:10px;bottom:10px}}
+@media print{body{background:white}.page{margin:0;padding:0}.hero{border-radius:0;box-shadow:none}.adminbtn,.admin,.actions{display:none!important}.card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="hero">
+ <div class="kicker">Phiếu học tập tương tác · Khoa học tự nhiên 6</div>
+ <h1>KHÁM PHÁ BĂNG GIÁ – LẮC RA KEM NGON!</h1>
+ <p>Chuẩn bị kiến thức, khám phá bí mật đá và muối, sẵn sàng cho thử thách STEM làm kem lắc.</p>
+</header>
+
+<div class="meta">
+ <label>HỌ VÀ TÊN HỌC SINH<input id="studentName" placeholder="Nhập họ và tên của em"></label>
+ <label>LỚP<input id="studentClass" placeholder="Ví dụ: 6A1"></label>
+</div>
+
+<section class="card intro">
+ <h2>🎯 NHIỆM VỤ CỦA EM</h2>
+ <ul>
+  <li>Hoàn thành câu hỏi trắc nghiệm để ôn lại kiến thức về sự chuyển thể.</li>
+  <li>Xem video thí nghiệm trên LMS, sau đó làm phần Đúng/Sai và Điền khuyết.</li>
+  <li>Thực hiện thí nghiệm 200 ml nước tại nhà và ước lượng thời gian nước đông thành đá.</li>
+  <li>Mang kết quả quan sát đến lớp để tham gia hoạt động STEM.</li>
+ </ul>
+</section>
+
+<section class="card blue" id="sec-mcq">
+ <div class="head"><div class="num">1</div><div><h2>KHỞI ĐỘNG CÙNG NHÀ KHOA HỌC NHÍ</h2><p>Khoanh tròn hoặc chạm chọn một đáp án đúng.</p></div></div>
+ <div class="body">
+  <div class="question" data-q="mcq1"><p class="q"><b>Câu 1.</b> Ở điều kiện áp suất thông thường, nước tinh khiết đông đặc ở nhiệt độ nào?</p>
+   <div class="options">
+    <label class="option"><input type="radio" name="mcq1" value="0"> A. 100°C</label>
+    <label class="option"><input type="radio" name="mcq1" value="1"> B. 50°C</label>
+    <label class="option"><input type="radio" name="mcq1" value="2"> C. 0°C</label>
+    <label class="option"><input type="radio" name="mcq1" value="3"> D. 10°C</label>
+   </div><div class="fb" id="fb-mcq1"></div>
+  </div>
+  <div class="question" data-q="mcq2"><p class="q"><b>Câu 2.</b> Quá trình nước chuyển từ thể lỏng sang thể rắn được gọi là:</p>
+   <div class="options">
+    <label class="option"><input type="radio" name="mcq2" value="0"> A. Sự nóng chảy</label>
+    <label class="option"><input type="radio" name="mcq2" value="1"> B. Sự đông đặc</label>
+    <label class="option"><input type="radio" name="mcq2" value="2"> C. Sự bay hơi</label>
+    <label class="option"><input type="radio" name="mcq2" value="3"> D. Sự ngưng tụ</label>
+   </div><div class="fb" id="fb-mcq2"></div>
+  </div>
+  <div class="question" data-q="mcq3"><p class="q"><b>Câu 3.</b> Khi muốn làm đông một lượng nước thành đá, chúng ta thường sử dụng dụng cụ nào?</p>
+   <div class="options">
+    <label class="option"><input type="radio" name="mcq3" value="0"> A. Tủ lạnh ở ngăn mát</label>
+    <label class="option"><input type="radio" name="mcq3" value="1"> B. Nồi đun nước</label>
+    <label class="option"><input type="radio" name="mcq3" value="2"> C. Ngăn đông tủ lạnh</label>
+    <label class="option"><input type="radio" name="mcq3" value="3"> D. Bình giữ nhiệt</label>
+   </div><div class="fb" id="fb-mcq3"></div>
+  </div>
+ </div>
+</section>
+
+<section class="card teal" id="sec-video">
+ <div class="head"><div class="num">2</div><div><h2>KHÁM PHÁ BÍ MẬT ĐÁ VÀ MUỐI QUA VIDEO</h2><p>Xem video trên LMS theo hướng dẫn của giáo viên rồi hoàn thành hai nhiệm vụ.</p></div></div>
+ <div class="body">
+  <div class="video-box" id="videoBox"><div class="video-placeholder"><span>🎬</span>Video thí nghiệm sẽ được giáo viên cài đặt tại đây.<br><small>Em có thể mở video trên LMS theo đường dẫn giáo viên cung cấp.</small></div></div>
+  <div class="video-links"><a href="#" id="openVideo" class="hidden" target="_blank" rel="noopener">↗ Mở video trên LMS</a><span class="muted" id="videoStatus">Chưa có video được cài đặt.</span></div>
+  <div class="question" id="tfBlock">
+   <p class="q"><b>A.</b> ĐÚNG HAY SAI? Đánh dấu vào ô tương ứng sau khi xem video.</p>
+   <div class="question" data-q="tf1"><div class="tfrow"><span>1. Khi cho muối vào đá, nhiệt độ của hỗn hợp có thể giảm xuống dưới 0°C.</span><div class="tf"><label><input type="radio" name="tf1" value="true"> Đúng</label><label><input type="radio" name="tf1" value="false"> Sai</label></div></div><div class="fb" id="fb-tf1"></div></div>
+   <div class="question" data-q="tf2"><div class="tfrow"><span>2. Muối làm tăng nhiệt độ đông đặc của nước.</span><div class="tf"><label><input type="radio" name="tf2" value="true"> Đúng</label><label><input type="radio" name="tf2" value="false"> Sai</label></div></div><div class="fb" id="fb-tf2"></div></div>
+   <div class="question" data-q="tf3"><div class="tfrow"><span>3. Muối hòa tan trong lớp nước trên bề mặt đá, tạo thành nước muối.</span><div class="tf"><label><input type="radio" name="tf3" value="true"> Đúng</label><label><input type="radio" name="tf3" value="false"> Sai</label></div></div><div class="fb" id="fb-tf3"></div></div>
+   <div class="question" data-q="tf4"><div class="tfrow"><span>4. Khi đá nóng chảy, đá hấp thụ nhiệt từ môi trường xung quanh.</span><div class="tf"><label><input type="radio" name="tf4" value="true"> Đúng</label><label><input type="radio" name="tf4" value="false"> Sai</label></div></div><div class="fb" id="fb-tf4"></div></div>
+  </div>
+  <div class="question" id="fillBlock">
+   <p class="q"><b>B.</b> ĐIỀN TỪ THÍCH HỢP VÀO CHỖ TRỐNG.</p>
+   <div class="words"><span>hấp thụ</span><span>thấp hơn</span><span>nước muối</span></div>
+   <div class="question" data-q="fill1"><p>1. Khi muối hòa tan trong lớp nước trên bề mặt đá, hỗn hợp tạo thành <select class="answer" id="fill1" aria-label="Chọn từ cho câu 1"><option value="">-- Chọn từ --</option><option value="nước muối">nước muối</option><option value="thấp hơn">thấp hơn</option><option value="hấp thụ">hấp thụ</option></select>.</p><div class="fb" id="fb-fill1"></div></div>
+   <div class="question" data-q="fill2"><p>2. Nước muối có nhiệt độ đông đặc <select class="answer" id="fill2" aria-label="Chọn từ cho câu 2"><option value="">-- Chọn từ --</option><option value="hấp thụ">hấp thụ</option><option value="nước muối">nước muối</option><option value="thấp hơn">thấp hơn</option></select> so với nước tinh khiết.</p><div class="fb" id="fb-fill2"></div></div>
+   <div class="question" data-q="fill3"><p>3. Trong quá trình nóng chảy, đá <select class="answer" id="fill3" aria-label="Chọn từ cho câu 3"><option value="">-- Chọn từ --</option><option value="thấp hơn">thấp hơn</option><option value="hấp thụ">hấp thụ</option><option value="nước muối">nước muối</option></select> nhiệt từ môi trường xung quanh.</p><div class="fb" id="fb-fill3"></div></div>
+   <div class="question" data-q="fill4"><p>4. Hỗn hợp đá và muối có thể đạt nhiệt độ <select class="answer" id="fill4" aria-label="Chọn từ cho câu 4"><option value="">-- Chọn từ --</option><option value="nước muối">nước muối</option><option value="hấp thụ">hấp thụ</option><option value="thấp hơn">thấp hơn</option></select> 0°C.</p><div class="fb" id="fb-fill4"></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="card amber" id="sec-experiment">
+ <div class="head"><div class="num">3</div><div><h2>THỬ THÁCH NHÀ KHOA HỌC NHÍ – THÍ NGHIỆM TẠI NHÀ</h2><p>Quan sát và ước lượng, không cần bấm giờ chính xác từng phút.</p></div></div>
+ <div class="body">
+  <div class="experiment">
+   <h3>🧊 200 ml nước cần bao lâu để đông thành đá?</h3>
+   <p><b>Chuẩn bị:</b> 200 ml nước sạch và một chai hoặc hộp nhựa phù hợp để cấp đông.</p>
+   <p><b>Cách tiến hành:</b></p>
+   <ol>
+    <li>Đong 200 ml nước và cho vào chai hoặc hộp nhựa, không đổ đầy.</li>
+    <li>Đặt vào ngăn đông tủ lạnh.</li>
+    <li>Quan sát sau một khoảng thời gian và theo dõi đến khi nước đông hoàn toàn thành đá.</li>
+    <li>Ghi lại thời gian ước lượng.</li>
+   </ol>
+   <div id="experimentTimeBlock"><p><b>Kết quả thí nghiệm:</b> Theo quan sát của em, 200 ml nước cần khoảng:</p>
+   <div class="row"><input type="text" id="experimentTime" placeholder="Ví dụ: 3–4 giờ"><span>để đông thành đá.</span></div></div>
+   <div id="experimentOpinionBlock"><p><b>Em có nhận xét gì về thời gian làm đông nước bằng ngăn đông tủ lạnh?</b></p>
+   <div class="choice">
+    <label><input type="radio" name="experimentOpinion" value="Cần rất ít thời gian"> Cần rất ít thời gian</label>
+    <label><input type="radio" name="experimentOpinion" value="Cần khá nhiều thời gian"> Cần khá nhiều thời gian</label>
+   </div></div>
+   <p class="safety">⚠️ Lưu ý an toàn: Không sử dụng chai thủy tinh, không đổ đầy chai và không vặn nắp quá chặt. Thực hiện dưới sự giám sát của người lớn. Không cần theo dõi thời gian chính xác từng phút.</p>
+  </div>
+ </div>
+</section>
+
+<div class="actions">
+ <button class="btn primary" id="submitBtn">NỘP BÀI & CHẤM ĐIỂM</button>
+ <button class="btn secondary" id="resetBtn">LÀM LẠI</button>
+ <button class="btn secondary" id="printBtn">IN PHIẾU</button>
+</div>
+<section class="card result" id="resultBox" aria-live="polite">
+ <h2 style="margin:0 0 5px">📊 KẾT QUẢ CỦA EM</h2>
+ <div class="score" id="resultScore">0 / 10 điểm</div>
+ <p id="resultMessage" style="margin:0 0 10px;color:var(--muted)"></p>
+ <p id="sheetSyncStatus" class="muted" role="status" style="margin:8px 0 12px;font-weight:700">Kết quả sẽ được gửi đến Google Sheets khi em nộp bài.</p>
+ <div id="scoreDetails"></div>
+ <p class="muted">Phần thí nghiệm được tính điểm theo số mục em đã trả lời. Hệ thống chỉ ghi nhận câu trả lời, không chấm đúng hoặc sai.</p>
+</section>
+
+<section class="card admin" id="adminPanel">
+ <h2>⚙️ QUẢN TRỊ GIÁO VIÊN</h2>
+ <p class="muted">Mật khẩu quản trị: 1230. Cấu hình bài tập được lưu trên trình duyệt này. Video tải từ máy chỉ xem được trong phiên hiện tại; muốn học sinh cùng xem, hãy dùng đường dẫn video trực tuyến.</p>
+ <h3 class="admin-subtitle">1. CẤU HÌNH CÂU HỎI VÀ ĐIỂM</h3>
+ <div class="admin-total">
+  <label for="cfgTotal">Tổng điểm toàn phiếu</label>
+  <input type="number" id="cfgTotal" min="0.5" max="100" step="0.5" value="10">
+  <span>điểm</span>
+ </div>
+ <div class="config-grid">
+  <div class="cfg-row">
+   <label class="cfg-enable"><input type="checkbox" id="cfgMcqOn" checked> Trắc nghiệm</label>
+   <label>Số câu <input type="number" id="cfgMcqCount" min="1" max="3" step="1" value="3"></label>
+   <label>Điểm tối đa <input type="number" id="cfgMcqPoints" min="0" max="100" step="0.5" value="3"></label>
+  </div>
+  <div class="cfg-row">
+   <label class="cfg-enable"><input type="checkbox" id="cfgTfOn" checked> Đúng / Sai</label>
+   <label>Số câu <input type="number" id="cfgTfCount" min="1" max="4" step="1" value="4"></label>
+   <label>Điểm tối đa <input type="number" id="cfgTfPoints" min="0" max="100" step="0.5" value="3"></label>
+  </div>
+  <div class="cfg-row">
+   <label class="cfg-enable"><input type="checkbox" id="cfgFillOn" checked> Điền khuyết</label>
+   <label>Số câu <input type="number" id="cfgFillCount" min="1" max="4" step="1" value="4"></label>
+   <label>Điểm tối đa <input type="number" id="cfgFillPoints" min="0" max="100" step="0.5" value="3"></label>
+  </div>
+  <div class="cfg-row">
+   <label class="cfg-enable"><input type="checkbox" id="cfgExpOn" checked> Thí nghiệm tại nhà</label>
+   <label>Số mục <input type="number" id="cfgExpCount" min="1" max="2" step="1" value="2"></label>
+   <label>Điểm tối đa <input type="number" id="cfgExpPoints" min="0" max="100" step="0.5" value="1"></label>
+  </div>
+ </div>
+ <div class="config-sum" id="configSumStatus" aria-live="polite">Tổng điểm các phần đang bật: 10 / 10 điểm.</div>
+ <div class="actions"><button class="btn primary" id="saveConfig">LƯU CẤU HÌNH BÀI TẬP</button></div>
+ <h3 class="admin-subtitle">2. CÀI ĐẶT VIDEO VÀ ẢNH MINH HỌA</h3>
+ <div class="admingrid">
+  <label>Đường dẫn video LMS / video trực tuyến<input type="url" id="videoUrl" placeholder="Dán đường dẫn video tại đây"></label>
+  <label>Tải video từ máy tính<input type="file" id="videoFile" accept="video/*"><small id="videoFileStatus" class="muted">Chưa chọn video.</small></label>
+  <label>Ảnh minh họa (không bắt buộc)<input type="file" id="imageFile" accept="image/*"><img id="imagePreview" class="preview hidden" alt="Ảnh xem trước"></label>
+ </div>
+ <div class="actions"><button class="btn primary" id="saveMedia">LƯU & ÁP DỤNG VIDEO/ẢNH</button><button class="btn secondary" id="closeAdmin">ĐÓNG QUẢN TRỊ</button><button class="btn secondary" id="clearMedia">XÓA VIDEO/ẢNH</button></div>
+</section>
+<p class="footer">Phiếu học tập STEM · Khoa học tự nhiên 6 · Học bằng khám phá, hiểu bằng thực hành</p>
+</div>
+<button class="adminbtn" id="adminToggle">⚙️ QUẢN TRỊ</button>
+
+<script>
+(function(){
+"use strict";
+const MEDIA_KEY="stem_kem_lac_media_v4";
+const CONFIG_KEY="stem_kem_lac_config_v1";
+const SHEETS_WEB_APP_URL="https://script.google.com/macros/s/AKfycbx2tFNtey0VL5XO7aZqXVgEm2OFxob_3LFwfzAKsFpVia4Wa6hZJnglyodW7jFn4K6S/exec";
+const $=id=>document.getElementById(id);
+const answerKey={
+ mcq:{mcq1:2,mcq2:1,mcq3:2},
+ tf:{tf1:true,tf2:false,tf3:true,tf4:true},
+ fill:{fill1:["nuoc muoi"],fill2:["thap hon"],fill3:["hap thu"],fill4:["thap hon"]}
+};
+const questionIds={mcq:Object.keys(answerKey.mcq),tf:Object.keys(answerKey.tf),fill:Object.keys(answerKey.fill)};
+const defaults={total:10,sections:{
+ mcq:{enabled:true,count:3,points:3},
+ tf:{enabled:true,count:4,points:3},
+ fill:{enabled:true,count:4,points:3},
+ experiment:{enabled:true,count:2,points:1}
+}};
+let config=JSON.parse(JSON.stringify(defaults));
+let media={url:"https://youtu.be/2D8eu2vTVuM",image:""};
+let localVideoUrl=null,localVideoName="",newImageData="",submitted=false;
+
+function normalize(value){return String(value||"").trim().toLocaleLowerCase("vi").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/g,"d").replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ");}
+function round2(n){return Math.round((n+Number.EPSILON)*100)/100;}
+function scoreFor(correct,total,points){return total>0?round2(correct/total*points):0;}
+function setFeedback(id,ok,answer,empty){const el=$("fb-"+id);if(!el)return;el.className="fb "+(empty?"neutral":ok?"good":"bad");el.textContent=empty?"Chưa trả lời, không tính điểm.":(ok?"✓ Chính xác. ":"✗ Chưa chính xác. ")+answer;}
+function activeCount(key){return config.sections[key].enabled?config.sections[key].count:0;}
+function gradeMCQ(){const ids=questionIds.mcq.slice(0,activeCount("mcq"));let correct=0;ids.forEach(id=>{const chosen=document.querySelector('input[name="'+id+'"]:checked');const value=chosen?Number(chosen.value):null;const answer=answerKey.mcq[id],ok=value===answer;if(ok)correct++;document.querySelectorAll('[data-q="'+id+'"] .option').forEach((label,index)=>{label.classList.remove("correct","wrong");if(index===answer)label.classList.add("correct");else if(value!==null&&index===value)label.classList.add("wrong");});setFeedback(id,ok,"Đáp án đúng: "+["A","B","C","D"][answer]+".",value===null);});return {correct,total:ids.length,points:config.sections.mcq.points,score:scoreFor(correct,ids.length,config.sections.mcq.points)};}
+function gradeTF(){const ids=questionIds.tf.slice(0,activeCount("tf"));let correct=0;ids.forEach(id=>{const chosen=document.querySelector('input[name="'+id+'"]:checked');const value=chosen?chosen.value==="true":null;const answer=answerKey.tf[id],ok=value===answer;if(ok)correct++;document.querySelectorAll('[data-q="'+id+'"] .tf label').forEach(label=>{const input=label.querySelector("input");label.style.borderColor="";label.style.background="";if((input.value==="true")===answer){label.style.borderColor="#66bd8b";label.style.background="#e9f7ef";}else if(chosen===input){label.style.borderColor="#e58b95";label.style.background="#fff0f1";}});setFeedback(id,ok,"Đáp án: "+(answer?"Đúng.":"Sai."),value===null);});return {correct,total:ids.length,points:config.sections.tf.points,score:scoreFor(correct,ids.length,config.sections.tf.points)};}
+function gradeFill(){const ids=questionIds.fill.slice(0,activeCount("fill"));let correct=0;ids.forEach(id=>{const el=$(id),value=normalize(el.value),ok=answerKey.fill[id].includes(value);if(ok)correct++;el.classList.remove("correct","wrong");if(value)el.classList.add(ok?"correct":"wrong");const answer=id==="fill1"?"nước muối":id==="fill3"?"hấp thụ":"thấp hơn";setFeedback(id,ok,"Đáp án: "+answer+".",!value);});return {correct,total:ids.length,points:config.sections.fill.points,score:scoreFor(correct,ids.length,config.sections.fill.points)};}
+function gradeExperiment(){const section=config.sections.experiment;if(!section.enabled)return {answered:0,total:0,points:0,score:0};const checks=[!!$("experimentTime").value.trim(),!!document.querySelector('input[name="experimentOpinion"]:checked')].slice(0,section.count);const answered=checks.filter(Boolean).length;return {answered,total:checks.length,points:section.points,score:scoreFor(answered,checks.length,section.points)};}
+function displayScore(value){return Number(value).toFixed(Number(value)%1===0?0:2);}
+function collectQuestionStats(){
+ const ids=[];
+ if(config.sections.mcq.enabled)ids.push(...questionIds.mcq.slice(0,config.sections.mcq.count));
+ if(config.sections.tf.enabled)ids.push(...questionIds.tf.slice(0,config.sections.tf.count));
+ if(config.sections.fill.enabled)ids.push(...questionIds.fill.slice(0,config.sections.fill.count));
+ let correct=0,unanswered=0;
+ ids.forEach(id=>{
+  let answered=false,isCorrect=false;
+  if(id.startsWith("mcq")){
+   const selected=document.querySelector('input[name="'+id+'"]:checked');
+   answered=!!selected;
+   isCorrect=answered&&Number(selected.value)===answerKey.mcq[id];
+  }else if(id.startsWith("tf")){
+   const selected=document.querySelector('input[name="'+id+'"]:checked');
+   answered=!!selected;
+   isCorrect=answered&&(selected.value==="true")===answerKey.tf[id];
+  }else{
+   const value=normalize($(id).value);
+   answered=!!value;
+   isCorrect=answered&&answerKey.fill[id].includes(value);
+  }
+  if(!answered)unanswered++;
+  else if(isCorrect)correct++;
+ });
+ return {correct:correct,wrong:ids.length-correct-unanswered,unanswered:unanswered,total:ids.length};
+}
+async function sendResultToGoogleSheets(payload){
+ const response=await fetch(SHEETS_WEB_APP_URL,{
+  method:"POST",
+  mode:"no-cors",
+  headers:{"Content-Type":"text/plain;charset=UTF-8"},
+  body:JSON.stringify(payload)
+ });
+ // no-cors deliberately returns an opaque response; the browser cannot inspect
+ // the Apps Script JSON response, so this confirms request dispatch, not row insertion.
+ return response;
+}
+async function submit(){
+ if(submitted)return;
+ const hoTen=$("studentName").value.trim();
+ const lop=$("studentClass").value.trim();
+ if(!hoTen){alert("Em hãy nhập họ và tên trước khi nộp bài.");$("studentName").focus();return;}
+ if(!lop){alert("Em hãy nhập lớp trước khi nộp bài.");$("studentClass").focus();return;}
+
+ submitted=true;
+ $("submitBtn").disabled=true;
+ $("submitBtn").textContent="ĐANG CHẤM VÀ GỬI KẾT QUẢ...";
+ $("sheetSyncStatus").textContent="Đang gửi kết quả đến Google Sheets...";
+ $("sheetSyncStatus").style.color="#315bd5";
+
+ const rows=[];
+ let totalScore=0;
+ if(config.sections.mcq.enabled){const r=gradeMCQ();rows.push({name:"Trắc nghiệm",correct:r.correct,total:r.total,score:r.score,points:r.points,unit:"câu đúng"});totalScore+=r.score;}
+ if(config.sections.tf.enabled){const r=gradeTF();rows.push({name:"Đúng / Sai",correct:r.correct,total:r.total,score:r.score,points:r.points,unit:"câu đúng"});totalScore+=r.score;}
+ if(config.sections.fill.enabled){const r=gradeFill();rows.push({name:"Điền khuyết",correct:r.correct,total:r.total,score:r.score,points:r.points,unit:"câu đúng"});totalScore+=r.score;}
+ if(config.sections.experiment.enabled){const r=gradeExperiment();rows.push({name:"Thí nghiệm tại nhà",correct:r.answered,total:r.total,score:r.score,points:r.points,unit:"mục đã trả lời"});totalScore+=r.score;}
+
+ totalScore=round2(totalScore);
+ const stats=collectQuestionStats();
+ $("resultScore").textContent=displayScore(totalScore)+" / "+displayScore(config.total)+" điểm";
+ $("resultMessage").textContent=hoTen+", em đã hoàn thành phần câu hỏi. Hãy mang kết quả thí nghiệm đến lớp để cùng thảo luận nhé!";
+ $("scoreDetails").innerHTML=rows.map(r=>'<div class="scoreline"><span>'+r.name+': '+r.correct+'/'+r.total+' '+r.unit+'</span><b>'+displayScore(r.score)+' / '+displayScore(r.points)+' điểm</b></div>').join("");
+ $("resultBox").classList.add("show");
+
+ const payload={
+  hoTen:hoTen,
+  lop:lop,
+  diem:totalScore,
+  soCauDung:stats.correct,
+  soCauSai:stats.wrong,
+  soCauChuaLam:stats.unanswered,
+  tongSoCau:stats.total
+ };
+ try{
+  await sendResultToGoogleSheets(payload);
+  $("sheetSyncStatus").textContent="✓ Đã gửi yêu cầu lưu kết quả đến Google Sheets. Giáo viên có thể kiểm tra dòng dữ liệu mới trong bảng kết quả.";
+  $("sheetSyncStatus").style.color="#168653";
+  $("submitBtn").textContent="ĐÃ NỘP BÀI";
+ }catch(error){
+  console.error("Không gửi được kết quả đến Google Sheets:",error);
+  $("sheetSyncStatus").textContent="Không gửi được kết quả. Em hãy báo giáo viên kiểm tra kết nối Internet và đường dẫn Apps Script.";
+  $("sheetSyncStatus").style.color="#bd3949";
+  $("submitBtn").textContent="ĐÃ CHẤM BÀI · CHƯA GỬI ĐƯỢC";
+ }
+ $("resultBox").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function reset(){submitted=false;document.querySelectorAll('input[type="radio"]').forEach(el=>el.checked=false);document.querySelectorAll(".answer").forEach(el=>{el.value="";el.classList.remove("correct","wrong");});document.querySelectorAll(".option").forEach(el=>el.classList.remove("correct","wrong"));document.querySelectorAll(".fb").forEach(el=>{el.textContent="";el.className="fb";});document.querySelectorAll(".tf label").forEach(el=>{el.style.borderColor="";el.style.background="";});$("experimentTime").value="";$("resultBox").classList.remove("show");$("submitBtn").disabled=false;$("submitBtn").textContent="NỘP BÀI & CHẤM ĐIỂM";$("sheetSyncStatus").textContent="Kết quả sẽ được gửi đến Google Sheets khi em nộp bài.";$("sheetSyncStatus").style.color="";}
+function applyConfig(){
+ $("sec-mcq").style.display=config.sections.mcq.enabled?"":"none";
+ $("sec-video").style.display=(config.sections.tf.enabled||config.sections.fill.enabled)?"":"none";
+ $("tfBlock").style.display=config.sections.tf.enabled?"":"none";
+ $("fillBlock").style.display=config.sections.fill.enabled?"":"none";
+ $("sec-experiment").style.display=config.sections.experiment.enabled?"":"none";
+ questionIds.mcq.forEach((id,i)=>{const el=document.querySelector('[data-q="'+id+'"]');el.style.display=i<config.sections.mcq.count?"":"none";});
+ questionIds.tf.forEach((id,i)=>{const el=document.querySelector('[data-q="'+id+'"]');el.style.display=i<config.sections.tf.count?"":"none";});
+ questionIds.fill.forEach((id,i)=>{const el=document.querySelector('[data-q="'+id+'"]');el.style.display=i<config.sections.fill.count?"":"none";});
+ $("experimentTimeBlock").style.display=config.sections.experiment.enabled&&config.sections.experiment.count>=1?"":"none";
+ $("experimentOpinionBlock").style.display=config.sections.experiment.enabled&&config.sections.experiment.count>=2?"":"none";
+ reset();
+}
+function loadConfig(){try{const saved=JSON.parse(localStorage.getItem(CONFIG_KEY)||"null");if(saved&&saved.sections){config.total=Number(saved.total)||10;for(const key of Object.keys(defaults.sections)){if(saved.sections[key])config.sections[key]=Object.assign({},defaults.sections[key],saved.sections[key]);}if(configValidation(config))config=JSON.parse(JSON.stringify(defaults));}}catch(e){config=JSON.parse(JSON.stringify(defaults));}}
+function populateConfigForm(){
+ $("cfgTotal").value=config.total;
+ const ids={mcq:["cfgMcqOn","cfgMcqCount","cfgMcqPoints"],tf:["cfgTfOn","cfgTfCount","cfgTfPoints"],fill:["cfgFillOn","cfgFillCount","cfgFillPoints"],experiment:["cfgExpOn","cfgExpCount","cfgExpPoints"]};
+ Object.entries(ids).forEach(([key,fields])=>{const s=config.sections[key];$(fields[0]).checked=s.enabled;$(fields[1]).value=s.count;$(fields[2]).value=s.points;});updateConfigSum();
+}
+function readConfigForm(){const fields={mcq:["cfgMcqOn","cfgMcqCount","cfgMcqPoints",3],tf:["cfgTfOn","cfgTfCount","cfgTfPoints",4],fill:["cfgFillOn","cfgFillCount","cfgFillPoints",4],experiment:["cfgExpOn","cfgExpCount","cfgExpPoints",2]};const next={total:Number($("cfgTotal").value),sections:{}};Object.entries(fields).forEach(([key,f])=>{next.sections[key]={enabled:$(f[0]).checked,count:Number($(f[1]).value),points:Number($(f[2]).value)};});return next;}
+function configValidation(next){if(!Number.isFinite(next.total)||next.total<=0)return "Tổng điểm phải lớn hơn 0.";let active=0,sum=0;for(const [key,s] of Object.entries(next.sections)){const max=key==="mcq"?3:key==="tf"||key==="fill"?4:2;if(!Number.isInteger(s.count)||s.count<1||s.count>max)return "Số câu/mục của phần "+key+" phải từ 1 đến "+max+".";if(!Number.isFinite(s.points)||s.points<0)return "Điểm tối đa phải là số không âm.";if(s.enabled){active++;sum+=s.points;}}if(!active)return "Cần bật ít nhất một phần bài tập.";if(Math.abs(sum-next.total)>0.001)return "Tổng điểm các phần đang bật là "+displayScore(sum)+", chưa bằng tổng điểm toàn phiếu "+displayScore(next.total)+". Cô hãy điều chỉnh trước khi lưu.";return "";}
+function updateConfigSum(){const next=readConfigForm();const sum=Object.values(next.sections).reduce((v,s)=>v+(s.enabled&&Number.isFinite(s.points)?s.points:0),0);const status=$("configSumStatus");const valid=Math.abs(sum-next.total)<0.001&&next.total>0;status.textContent="Tổng điểm các phần đang bật: "+displayScore(sum)+" / "+displayScore(next.total)+" điểm. "+(valid?"Phân bổ hợp lệ.":"Cần điều chỉnh để hai giá trị bằng nhau.");status.classList.toggle("invalid",!valid);}
+function saveConfig(){const next=readConfigForm();const error=configValidation(next);if(error){alert(error);return;}config=next;applyConfig();try{localStorage.setItem(CONFIG_KEY,JSON.stringify(config));alert("Đã lưu cấu hình và áp dụng cho phiếu học tập.");}catch(e){alert("Cấu hình đã áp dụng trong phiên này nhưng trình duyệt không cho phép lưu lâu dài.");}}
+function renderVideo(){const box=$("videoBox"),link=$("openVideo"),status=$("videoStatus");if(localVideoUrl){box.innerHTML='<video controls playsinline preload="metadata"></video>';box.querySelector("video").src=localVideoUrl;link.classList.add("hidden");status.textContent="Video từ máy: "+localVideoName+" (chỉ dùng trong phiên hiện tại).";}else if(media.url){const url=media.url,yt=url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]+)/);if(/\.(mp4|webm|ogg)(\?.*)?$/i.test(url)){box.innerHTML='<video controls playsinline preload="metadata"></video>';box.querySelector("video").src=url;}else if(yt){box.innerHTML='<iframe title="Video thí nghiệm đá và muối" src="https://www.youtube-nocookie.com/embed/'+yt[1]+'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';}else{box.innerHTML='<div class="video-placeholder"><span>🎬</span>Video đã được giáo viên liên kết.<br><small>Nếu không phát trong khung, hãy mở video trên LMS.</small></div>';}link.href=url;link.classList.remove("hidden");status.textContent="Video đã được giáo viên cài đặt.";}else{box.innerHTML='<div class="video-placeholder"><span>🎬</span>Video thí nghiệm sẽ được giáo viên cài đặt tại đây.<br><small>Em xem video trên LMS theo hướng dẫn của giáo viên.</small></div>';link.classList.add("hidden");status.textContent="Chưa có video được cài đặt.";}document.querySelectorAll(".media-thumb").forEach(el=>el.remove());if(media.image){const img=document.createElement("img");img.className="media-thumb";img.src=media.image;img.alt="Ảnh minh họa thí nghiệm đá và muối";img.style.cssText="display:block;max-width:100%;max-height:150px;object-fit:contain;margin:10px auto;border-radius:10px";box.insertAdjacentElement("afterend",img);}}
+function openAdmin(){const password=prompt("Nhập mật khẩu quản trị:");if(password==="1230"){$("adminPanel").classList.add("open");populateConfigForm();$("videoUrl").value=media.url||"";if(media.image){$("imagePreview").src=media.image;$("imagePreview").classList.remove("hidden");}$("adminPanel").scrollIntoView({behavior:"smooth",block:"start"});}else if(password!==null)alert("Mật khẩu chưa đúng.");}
+function imageData(file){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>{const image=new Image();image.onload=()=>{const scale=Math.min(1,1000/Math.max(image.width,image.height));const canvas=document.createElement("canvas");canvas.width=Math.round(image.width*scale);canvas.height=Math.round(image.height*scale);canvas.getContext("2d").drawImage(image,0,0,canvas.width,canvas.height);resolve(canvas.toDataURL("image/jpeg",.78));};image.onerror=reject;image.src=reader.result;};reader.onerror=reject;reader.readAsDataURL(file);});}
+
+$("submitBtn").addEventListener("click",submit);
+$("resetBtn").addEventListener("click",reset);
+$("printBtn").addEventListener("click",()=>window.print());
+$("adminToggle").addEventListener("click",openAdmin);
+$("closeAdmin").addEventListener("click",()=>$("adminPanel").classList.remove("open"));
+["cfgTotal","cfgMcqOn","cfgMcqCount","cfgMcqPoints","cfgTfOn","cfgTfCount","cfgTfPoints","cfgFillOn","cfgFillCount","cfgFillPoints","cfgExpOn","cfgExpCount","cfgExpPoints"].forEach(id=>$(id).addEventListener("input",updateConfigSum));
+$("saveConfig").addEventListener("click",saveConfig);
+$("videoFile").addEventListener("change",event=>{const file=event.target.files&&event.target.files[0];if(!file)return;if(localVideoUrl)URL.revokeObjectURL(localVideoUrl);localVideoUrl=URL.createObjectURL(file);localVideoName=file.name;$("videoFileStatus").textContent="Đã chọn: "+file.name+" · Đã áp dụng xem trước vào phần video.";renderVideo();});
+$("imageFile").addEventListener("change",async event=>{const file=event.target.files&&event.target.files[0];if(!file)return;try{newImageData=await imageData(file);$("imagePreview").src=newImageData;$("imagePreview").classList.remove("hidden");}catch(error){alert("Không đọc được ảnh. Vui lòng chọn tệp JPG hoặc PNG.");}});
+$("saveMedia").addEventListener("click",()=>{const url=$("videoUrl").value.trim();if(url&&!/^https?:\/\//i.test(url)){alert("Đường dẫn video cần bắt đầu bằng http:// hoặc https://.");return;}media.url=url;if(newImageData)media.image=newImageData;try{localStorage.setItem(MEDIA_KEY,JSON.stringify(media));}catch(error){alert("Không thể lưu ảnh do dung lượng lưu trữ. Hãy chọn ảnh nhỏ hơn.");return;}renderVideo();alert("Đã lưu đường dẫn và áp dụng tư liệu vào phiếu.");});
+$("clearMedia").addEventListener("click",()=>{if(!confirm("Xóa đường dẫn video và ảnh minh họa đã cài đặt?"))return;media={url:"",image:""};newImageData="";if(localVideoUrl){URL.revokeObjectURL(localVideoUrl);localVideoUrl=null;localVideoName="";}try{localStorage.setItem(MEDIA_KEY,JSON.stringify(media));}catch(error){}$("videoUrl").value="";$("videoFile").value="";$("imageFile").value="";$("imagePreview").classList.add("hidden");$("videoFileStatus").textContent="Chưa chọn video.";renderVideo();});
+
+try{const savedMedia=JSON.parse(localStorage.getItem(MEDIA_KEY)||"null");if(savedMedia){if(Object.prototype.hasOwnProperty.call(savedMedia,"url"))media.url=savedMedia.url;if(Object.prototype.hasOwnProperty.call(savedMedia,"image"))media.image=savedMedia.image;}}catch(error){}
+loadConfig();applyConfig();renderVideo();
+})();
+</script>
+</body>
+</html>
